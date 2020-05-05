@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/5 | LgrBlog</title>
+  <title>基于SpringBoot+Dubbo的微服务框架（借助Docker+Jenkins实现自动化、容器化部署） | LgrBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LgrBlog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/05/index.html">
+  <meta name="description" content="前言该文章通过学习https:&#x2F;&#x2F;github.com&#x2F;bz51&#x2F;SpringBoot-Dubbo-Docker-Jenkins 来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于SpringBoot+Dubbo的微服务框架（借助Docker+Jenkins实现自动化、容器化部署）">
+<meta property="og:url" content="http://yoursite.com/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/index.html">
 <meta property="og:site_name" content="LgrBlog">
+<meta property="og:description" content="前言该文章通过学习https:&#x2F;&#x2F;github.com&#x2F;bz51&#x2F;SpringBoot-Dubbo-Docker-Jenkins 来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="https://leanote.com/api/file/getImage?fileId=5a1cc0eaab64416ff3001095">
+<meta property="article:published_time" content="2020-05-05T08:37:39.000Z">
+<meta property="article:modified_time" content="2020-05-05T13:10:38.993Z">
 <meta property="article:author" content="Lgr">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="dubbo">
+<meta property="article:tag" content="jenkins">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://leanote.com/api/file/getImage?fileId=5a1cc0eaab64416ff3001095">
   
     <link rel="alternative" href="/atom.xml" title="LgrBlog" type="application/atom+xml">
   
@@ -150,36 +160,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-基于SpringBoot-Dubbo的微服务框架（借助Docker-Jenkins实现自动化、容器化部署）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-05-05T08:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/">基于SpringBoot+Dubbo的微服务框架（借助Docker+Jenkins实现自动化、容器化部署）</a>
+    <h1 class="article-title" itemprop="name">
+      基于SpringBoot+Dubbo的微服务框架（借助Docker+Jenkins实现自动化、容器化部署）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-05-05T08:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>该文章通过学习<code>https://github.com/bz51/SpringBoot-Dubbo-Docker-Jenkins</code> 来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。</p>
+<a id="more"></a>
+
+<h2 id="1-学习说明"><a href="#1-学习说明" class="headerlink" title="1. 学习说明"></a>1. 学习说明</h2><p>  工作中使用的是Feign + Eureka，而dubbo只是之前学习过并没有实际搭建项目使用过，docker刚好前段时间学完，就寻思着找一个项目练练手，机缘巧合下看到了这个项目，再加上jenkins也没学过，顺带着也了解学习一下，整挺好。</p>
+<h2 id="2-项目结构"><a href="#2-项目结构" class="headerlink" title="2. 项目结构"></a>2. 项目结构</h2><ul>
+<li>创建一个Maven Project，命名为“Gaoxi”<br>这个Project由多个Module构成，每个Module对应着“微服务”的一个子系统，可独立运行，是一个独立的项目。 这也是目前主流的项目组织形式，即多模块项目。<br>在Gaoxi这个项目下创建各个子模块，每个自模块都是一个独立的SpringBoot项目：</li>
+<li>Gaoxi-User 用户服务</li>
+<li>Gaoxi-Order 订单服务</li>
+<li>Gaoxi-Product 产品服务</li>
+<li>Gaoxi-Analysis 数据分析服务</li>
+<li>Gaoxi-Controller 本系统的控制层，和以往三层结构中的Controller层的作用一样，都是用作请求调度，只不过在微服务架构中，我们将它抽象成一个单独的系统，可以独立运行。</li>
+<li>Gaoxi-Common-Service-Facade 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。</li>
+<li>Gaoxi-Redis 我们将Redis封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。而这些配置均在Gaoxi-Redis系统中完成了。<br><br><img src="https://leanote.com/api/file/getImage?fileId=5a1cc0eaab64416ff3001095" alt="title"></li>
+</ul>
+<p>未完待续</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,103 +226,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-05-04T10:16:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/04/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker常用命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">docker常用命令</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/%E6%88%91%E7%9A%84%E6%96%B0%E5%B8%96%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2020-05-04T03:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/%E6%88%91%E7%9A%84%E6%96%B0%E5%B8%96%E5%AD%90/">Hello MyBlog</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -322,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
