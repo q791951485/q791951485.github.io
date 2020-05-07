@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言之前学习了docker的安装已经镜像的使用，在此文章中备用和记录一些常用的命令。">
 <meta property="og:locale" content="cn">
 <meta property="article:published_time" content="2020-05-04T10:16:44.000Z">
-<meta property="article:modified_time" content="2020-05-05T14:05:59.530Z">
+<meta property="article:modified_time" content="2020-05-07T15:11:29.981Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -182,6 +182,10 @@
 <p>docker images</p>
 </blockquote>
 </li>
+<li><h3 id="列出所有容器"><a href="#列出所有容器" class="headerlink" title="列出所有容器"></a>列出所有容器</h3><blockquote>
+<p>docker ps -a</p>
+</blockquote>
+</li>
 <li><h3 id="从dockerhub检索image"><a href="#从dockerhub检索image" class="headerlink" title="从dockerhub检索image"></a>从dockerhub检索image</h3><blockquote>
 <p>docker search {image_name}</p>
 </blockquote>
@@ -231,7 +235,7 @@
 </blockquote>
 </li>
 <li><h3 id="执行dockerfile生成镜像"><a href="#执行dockerfile生成镜像" class="headerlink" title="执行dockerfile生成镜像"></a>执行dockerfile生成镜像</h3><blockquote>
-<p>docker build -f /{docker路径} -t {新镜像名字} .</p>
+<p>docker build -f /{dockerfile路径} -t {新镜像名字} .</p>
 </blockquote>
 </li>
 </ul>

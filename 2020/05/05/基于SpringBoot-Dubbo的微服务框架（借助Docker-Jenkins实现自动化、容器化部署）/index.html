@@ -16,8 +16,10 @@
 <meta property="og:description" content="前言该文章通过学习https:&#x2F;&#x2F;github.com&#x2F;bz51&#x2F;SpringBoot-Dubbo-Docker-Jenkins 来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="https://leanote.com/api/file/getImage?fileId=5a1cc0eaab64416ff3001095">
+<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/tomact_user.png">
+<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/fileuser.png">
 <meta property="article:published_time" content="2020-05-05T08:37:39.000Z">
-<meta property="article:modified_time" content="2020-05-06T15:43:59.230Z">
+<meta property="article:modified_time" content="2020-05-07T15:38:23.803Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="springboot">
@@ -198,6 +200,24 @@
 <h4 id="2-把包放入docker中运行"><a href="#2-把包放入docker中运行" class="headerlink" title="2.把包放入docker中运行"></a>2.把包放入docker中运行</h4><blockquote>
 <p>把自己的包需要转换为docker的镜像才能在docker中跑起来。所以需要我们自己写一个dockerFile或者新建一个tomcat的镜像做好数据卷把包放进去。</p>
 </blockquote>
+<h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>方法1采用的是把项目打成war包放到tomact下的webapp文件夹中进行部署。  </p>
+<p>第一步<br>启动一个docker的tomcat容器，我采用的是把tomact下的webapp文件夹挂载到本地的一个文件夹中的方式，这样操作也方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;我使用的windows版的docker 所以本地目录是D盘，Linux操作同理。    </span><br><span class="line">docker run -it --name tomcatuser1 -p 10050:8080 -v E:\docker\tomcat:&#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps tomcat</span><br></pre></td></tr></table></figure>
+<p>第二步打包项目模块<br>利用maven的插件package一键打包，很方便。</p>
+<p>第三步把war包放入到挂载的本地目录中。<br><br><img src="http://q9t3mch26.bkt.clouddn.com/tomact_user.png" >   </p>
+<blockquote>
+<p>lgruser 是项目名称 hello 是一个controller，很简单的一个demo</p>
+</blockquote>
+<h4 id="2-利用dockerFile运行"><a href="#2-利用dockerFile运行" class="headerlink" title="2.利用dockerFile运行"></a>2.利用dockerFile运行</h4><p>方法2是因为springBoot 项目内置tomact，打成jar包之后用dockerFile生成镜像然后运行即可。    </p>
+<p>第一步<br>直接把项目打成jar包即可。</p>
+<p>第二步<br>写好dockerFile文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8</span><br><span class="line">ADD dockerfileuser.jar app.jar</span><br><span class="line">CMD java -jar app.jar</span><br></pre></td></tr></table></figure>
+<p>第三步<br>运行dockerfile即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注意：需要在dockerfile保存的地方执行此命令！</span><br><span class="line">docker build -f E:&#x2F;docker&#x2F;dockerfiles&#x2F;userdockerfile.txt -t userjar:1 .</span><br></pre></td></tr></table></figure>
+
+<p>第四步运行生成的镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;这里有个小知识点在tomcat中放入war包，暴露的端口是tomcat的端口，所以项目中的server.port是不管用的。  </span><br><span class="line">&#x2F;&#x2F;而利用dockerfile是利用的springcloud内置的tomcat，所以应该暴露server.port。  </span><br><span class="line">docker run -id --name fileuser1 -p 11501:11501 userjar:1</span><br></pre></td></tr></table></figure>
+<p><br><img src="http://q9t3mch26.bkt.clouddn.com/fileuser.png" >  </p>
 <p>未完待续</p>
 
       
