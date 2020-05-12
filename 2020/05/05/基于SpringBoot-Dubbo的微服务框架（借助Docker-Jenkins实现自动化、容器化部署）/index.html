@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_pro.png">
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_cus.png">
 <meta property="article:published_time" content="2020-05-05T08:37:39.000Z">
-<meta property="article:modified_time" content="2020-05-09T14:17:11.318Z">
+<meta property="article:modified_time" content="2020-05-12T16:08:52.473Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="springboot">
@@ -245,6 +245,19 @@
 <p>之后 <code>java -jar 包名</code>启动。<br>前端服务启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 <p>访问admin的地址即可。<br><img src="http://q9t3mch26.bkt.clouddn.com/new_admin.png"><br><img src="http://q9t3mch26.bkt.clouddn.com/new_pro.png"><br><img src="http://q9t3mch26.bkt.clouddn.com/new_cus.png"><br>新版的admin有一个问题就是只显示提供者，消费者需要点提供者进去，然后选择消费者才可以看到。</p>
+<h4 id="3-搭建docker的jenkins"><a href="#3-搭建docker的jenkins" class="headerlink" title="3.搭建docker的jenkins"></a>3.搭建docker的jenkins</h4><p>第一步<br>拉取镜像文件   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull jenkins&#x2F;jenkins</span><br></pre></td></tr></table></figure>
+<p>这里遇见了一个问题，使用<code>docker pull jenkins</code>拉取的镜像版本很低，启动后无法安装插件，一直提示更新版本，所以我就删除了那个版本，换成了现在这个。<br>之后又使用了<code>docker pull docker.io/jenkins/jenkins</code>版本对了也无法下载，又通过一顿查找原因，最后使用了目前这个镜像才可以了。最后搞清楚了原因是插件都是从国外网站下载的，所以才经常失败，换一个源文件即可，具体配置自行百度。</p>
+<blockquote>
+<p><a href="https://jenkins-update.davidz.cn/update-center.json" target="_blank" rel="noopener">https://jenkins-update.davidz.cn/update-center.json</a>  # 备用</p>
+</blockquote>
+<p>第二步<br>启动jenkins</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -id --name myjekins -p 8080:8080 -p 50000:50000 -v E:\docker\jekins:&#x2F;var&#x2F;jenkins_home jenkins&#x2F;jenkins</span><br></pre></td></tr></table></figure>
+
+<p>第三步<br>构建服务</p>
+<p>报错代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Lgr-Common-Service-Facade] $ &#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;jdk1.8.0_231&#x2F;bin&#x2F;java -cp &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven35-agent-1.13.jar:&#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3&#x2F;boot&#x2F;plexus-classworlds-2.6.0.jar:&#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3&#x2F;conf&#x2F;logging jenkins.maven3.agent.Maven35Main &#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3 &#x2F;var&#x2F;jenkins_home&#x2F;war&#x2F;WEB-INF&#x2F;lib&#x2F;remoting-4.3.jar &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven35-interceptor-1.13.jar &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven3-interceptor-commons-1.13.jar 34997</span><br><span class="line">&#x2F;lib&#x2F;ld-linux-aarch64.so.1: No such file or directory</span><br><span class="line">ERROR: Failed to launch Maven. Exit code &#x3D; 255</span><br></pre></td></tr></table></figure>
+<p>按照着引用的文章来就行，不过因为我自己安装的和引用的文章中的不一样，所以我还必须重新安装maven的插件。而且因为我是windows版的docker，所以我在配置jenkins的时候，把windows版本的jdk放上去发现报错了，才想起来是版本的问题，之后我就下载了一个Linux版本的JDK放到了加载卷里，然而一直报Maven找不到文件的错误，后来改了半天，试了各种方法修改问题，最后发现是JDK的问题，解决方案是进入到Jenkins的容器中<code>echo $JAVA_HOME</code>得到的JAVA_HOME才是好用的，历经了两天才找到的BUG，吐血。windows版的maven居然和linux通用是我没想到的。</p>
 <p>未完待续</p>
 
       
