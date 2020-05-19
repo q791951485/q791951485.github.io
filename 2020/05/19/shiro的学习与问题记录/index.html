@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 随笔 | LgrBlog</title>
+  <title>shiro的学习与问题记录 | LgrBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LgrBlog">
-<meta property="og:url" content="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/index.html">
+  <meta name="description" content="前言​    最近刚好公司要用到权限相关的知识所以搜索了一篇网上的文章来系统的学习一下shiro。https:&#x2F;&#x2F;www.iteye.com&#x2F;blog&#x2F;jinnianshilongnian-2018398  顺便来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shiro的学习与问题记录">
+<meta property="og:url" content="http://yoursite.com/2020/05/19/shiro%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="LgrBlog">
+<meta property="og:description" content="前言​    最近刚好公司要用到权限相关的知识所以搜索了一篇网上的文章来系统的学习一下shiro。https:&#x2F;&#x2F;www.iteye.com&#x2F;blog&#x2F;jinnianshilongnian-2018398  顺便来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png">
+<meta property="article:published_time" content="2020-05-19T13:53:21.000Z">
+<meta property="article:modified_time" content="2020-05-19T16:17:02.830Z">
 <meta property="article:author" content="Lgr">
+<meta property="article:tag" content="shiro">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png">
   
     <link rel="alternative" href="/atom.xml" title="LgrBlog" type="application/atom+xml">
   
@@ -150,68 +157,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-shiro的学习与问题记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/%E6%88%91%E7%9A%84%E6%96%B0%E5%B8%96%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2020-05-04T03:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/%E6%88%91%E7%9A%84%E6%96%B0%E5%B8%96%E5%AD%90/">Hello MyBlog</a>
+    <h1 class="article-title" itemprop="name">
+      shiro的学习与问题记录
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/19/shiro%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2020-05-19T13:53:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    最近刚好公司要用到权限相关的知识所以搜索了一篇网上的文章来系统的学习一下shiro。<a href="https://www.iteye.com/blog/jinnianshilongnian-2018398" target="_blank" rel="noopener">https://www.iteye.com/blog/jinnianshilongnian-2018398</a>  顺便来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。 </p>
+<a id="more"></a> 
+
+<h2 id="1-shiro的结构"><a href="#1-shiro的结构" class="headerlink" title="1. shiro的结构"></a>1. shiro的结构</h2><img src="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png" >
+
+<p>​    这里就简单介绍一些shiro的基本功能和各个的功能，其他就去点击访问页面上的学习吧，我这里也就不往上复制粘贴了，没啥用。</p>
+<p><strong>Authentication</strong>：身份认证/登录，验证用户是不是拥有相应的身份；</p>
+<p><strong>Authorization</strong>：授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限；</p>
+<p><strong>Session Manager</strong>：会话管理，即用户登录后就是一次会话，在没有退出之前，它的所有信息都在会话中；会话可以是普通JavaSE环境的，也可以是如Web环境的；</p>
+<p><strong>Cryptography</strong>：加密，保护数据的安全性，如密码加密存储到数据库，而不是明文存储；</p>
+<p><strong>Web Support</strong>：Web支持，可以非常容易的集成到Web环境；</p>
+<p>Caching：缓存，比如用户登录后，其用户信息、拥有的角色/权限不必每次去查，这样可以提高效率；</p>
+<p><strong>Concurrency</strong>：shiro支持多线程应用的并发验证，即如在一个线程中开启另一个线程，能把权限自动传播过去；</p>
+<p><strong>Testing</strong>：提供测试支持；</p>
+<p><strong>Run As</strong>：允许一个用户假装为另一个用户（如果他们允许）的身份进行访问；</p>
+<p><strong>Remember Me</strong>：记住我，这个是非常常见的功能，即一次登录后，下次再来的话不用登录了。</p>
+<p><strong>记住一点，Shiro不会去维护用户、维护权限；这些需要我们自己去设计提供；然后通过相应的接口注入给Shiro即可。</strong></p>
+<h2 id="2-问题总结"><a href="#2-问题总结" class="headerlink" title="2.  问题总结"></a>2.  问题总结</h2><ul>
+<li><h4 id="1）测试类问题"><a href="#1）测试类问题" class="headerlink" title="1）测试类问题"></a>1）测试类问题</h4></li>
+</ul>
+<p>上来写个测试类就遇到了问题，明明在resource里添加了shiro.ini文件但是一直报找不到文件的错误，然后发现是因为是新加的文件，target中的classes里面没有这个文件，使用maven的install插件解决问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.io.IOException: Resource [classpath:shiro.ini] could not be found</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="获取token密码问题"><a href="#获取token密码问题" class="headerlink" title="获取token密码问题"></a>获取token密码问题</h4></li>
+</ul>
+<p>自己重写了一个realm，在获取token的账户密码时发现，账户直接通过getPrincipal()之后强转String就可以获得。而密码却不能这样。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个可以获取传过来的token的账号</span></span><br><span class="line">String username = (String) token.getPrincipal();</span><br><span class="line"><span class="comment">//这个可以获取传过来的token的密码</span></span><br><span class="line">String password =<span class="keyword">new</span> String ((<span class="keyword">char</span>[]) token.getCredentials());</span><br></pre></td></tr></table></figure>
+
+<p>所以我怀着好奇心去看了一下shiro的源码，发现在new UsernamePasswordToken这个实例对象的时候，把密码转成了char[]的类型，而且之后的参数都传为final修饰，防止参数改变，代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">UsernamePasswordToken</span><span class="params">(<span class="keyword">final</span> String username, <span class="keyword">final</span> String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(username, password != <span class="keyword">null</span> ? password.toCharArray(): <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>未完待续</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shiro</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/19/shiro%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于SpringBoot+Dubbo的微服务框架（借助Docker+Jenkins实现自动化、容器化部署）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,9 +350,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
