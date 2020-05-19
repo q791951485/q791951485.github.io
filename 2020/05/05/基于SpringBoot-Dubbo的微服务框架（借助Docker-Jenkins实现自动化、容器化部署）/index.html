@@ -23,8 +23,10 @@
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_admin.png">
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_pro.png">
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_cus.png">
+<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/jekins-jdk.png">
+<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/jekins-maven.png">
 <meta property="article:published_time" content="2020-05-05T08:37:39.000Z">
-<meta property="article:modified_time" content="2020-05-18T15:09:10.212Z">
+<meta property="article:modified_time" content="2020-05-19T13:49:26.759Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="springboot">
@@ -258,6 +260,7 @@
 <p>报错代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Lgr-Common-Service-Facade] $ &#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;jdk1.8.0_231&#x2F;bin&#x2F;java -cp &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven35-agent-1.13.jar:&#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3&#x2F;boot&#x2F;plexus-classworlds-2.6.0.jar:&#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3&#x2F;conf&#x2F;logging jenkins.maven3.agent.Maven35Main &#x2F;var&#x2F;jenkins_home&#x2F;myfile&#x2F;apache-maven-3.6.3 &#x2F;var&#x2F;jenkins_home&#x2F;war&#x2F;WEB-INF&#x2F;lib&#x2F;remoting-4.3.jar &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven35-interceptor-1.13.jar &#x2F;var&#x2F;jenkins_home&#x2F;plugins&#x2F;maven-plugin&#x2F;WEB-INF&#x2F;lib&#x2F;maven3-interceptor-commons-1.13.jar 34997</span><br><span class="line">&#x2F;lib&#x2F;ld-linux-aarch64.so.1: No such file or directory</span><br><span class="line">ERROR: Failed to launch Maven. Exit code &#x3D; 255</span><br></pre></td></tr></table></figure>
 <p>按照着引用的文章来就行，不过因为我自己安装的和引用的文章中的不一样，所以我还必须重新安装maven的插件。而且因为我是windows版的docker，所以我在配置jenkins的时候，把windows版本的jdk放上去发现报错了，才想起来是版本的问题，之后我就下载了一个Linux版本的JDK放到了加载卷里，然而一直报Maven找不到文件的错误，后来改了半天，试了各种方法修改问题，最后发现是JDK的问题，解决方案是进入到Jenkins的容器中<code>echo $JAVA_HOME</code>得到的JAVA_HOME才是好用的，历经了两天才找到的BUG，吐血。windows版的maven居然和linux通用是我没想到的。</p>
+<p>Jenkins配置<br><img src="http://q9t3mch26.bkt.clouddn.com/jekins-jdk.png"><br><img src="http://q9t3mch26.bkt.clouddn.com/jekins-maven.png"></p>
 <p>构建maven<br>发布到tomcat<br>发布这一块不知道什么问题一直不能把包送到tomcat里面，解决了三天也没发现怎么回事，只能等后续再研究了。。</p>
 <p>未完待续</p>
 
