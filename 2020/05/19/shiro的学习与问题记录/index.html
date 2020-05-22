@@ -17,7 +17,7 @@
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png">
 <meta property="article:published_time" content="2020-05-19T13:53:21.000Z">
-<meta property="article:modified_time" content="2020-05-22T15:18:24.201Z">
+<meta property="article:modified_time" content="2020-05-22T15:31:09.980Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="shiro">
 <meta name="twitter:card" content="summary">
@@ -234,14 +234,15 @@
 </ul>
 <ul>
 <li><h3 id="6）字符串通配符权限"><a href="#6）字符串通配符权限" class="headerlink" title="6）字符串通配符权限"></a>6）<strong>字符串通配符权限</strong></h3><ul>
-<li><h3 id="单个资源多个权限"><a href="#单个资源多个权限" class="headerlink" title="单个资源多个权限"></a>单个资源多个权限</h3><pre><code>规则：“资源标识符：操作：对象实例ID”  即对哪个资源的哪个实例可以进行什么操作。其默认支持通配符权限字符串，“:”表示资源/操作/实例的分割；“,”表示操作的分割；“*”表示任意资源/操作/实例。 
-
-ini配置  </code></pre></li>
+<li><h3 id="单个资源多个权限"><a href="#单个资源多个权限" class="headerlink" title="单个资源多个权限"></a>单个资源多个权限</h3></li>
 </ul>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">role41</span>=system:user:update,system:user:delete  </span><br><span class="line"><span class="comment">#可以简写为</span></span><br><span class="line"><span class="attr">role42</span>=<span class="string">"system:user:update,delete"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>规则：“资源标识符：操作：对象实例ID”  即对哪个资源的哪个实例可以进行什么操作。其默认支持通配符权限字符串，“:”表示资源/操作/实例的分割；“,”表示操作的分割；“*”表示任意资源/操作/实例。<br>ini配置  </p>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">role41</span>=system:user:update,system:user:delete  </span><br><span class="line"><span class="comment">#可以简写为</span></span><br><span class="line"><span class="attr">role42</span>=<span class="string">"system:user:update,delete"</span></span><br></pre></td></tr></table></figure>
 
-<p>​    通过“system:user:update,delete”验证”system:user:update, system:user:delete”是没问题的，但是反过来是规则不成立。 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> result = subject.checkPermissions(<span class="string">"system:user:update,delete"</span>);</span><br></pre></td></tr></table></figure>
+<p>  ​    通过“system:user:update,delete”验证”system:user:update, system:user:delete”是没问题的，但是反过来是规则不成立。 </p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> result = subject.checkPermissions(<span class="string">"system:user:update,delete"</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p><strong>单个资源全部权限</strong> </p>
@@ -253,7 +254,7 @@ ini配置  </code></pre></li>
 <p>还有一些ini的配置和java配置就不多赘述了，参阅的文章比我写的好多了。</p>
 </li>
 </ul>
-</li>
+<ul>
 <li><h3 id="7）-编码-解码"><a href="#7）-编码-解码" class="headerlink" title="7） 编码/解码"></a>7） 编码/解码</h3><p>​    Shiro提供了base64和16进制字符串编码/解码的API支持，方便一些编码解码操作 。</p>
 <p>base64编码/解码操作 </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"hello"</span>;  </span><br><span class="line">String base64Encoded = Base64.encodeToString(str.getBytes());  </span><br><span class="line">String str2 = Base64.decodeToString(base64Encoded);  </span><br><span class="line">Assert.assertEquals(str, str2);</span><br></pre></td></tr></table></figure>
@@ -273,8 +274,7 @@ ini配置  </code></pre></li>
 
 <p>​    如上代码通过盐“123”MD5散列“hello”。另外散列时还可以指定散列次数，如2次表示：md5(md5(str))：“new Md5Hash(str, salt, 2).toString()”。 </p>
 </li>
-<li><h3 id="9）授权-认证"><a href="#9）授权-认证" class="headerlink" title="9）授权/认证"></a>9）授权/认证</h3><p>在这里写了一个自定义的relam，继承了<code>AuthorizingRealm</code>重写了<code>doGetAuthenticationInfo</code>和<code>doGetAuthorizationInfo</code>这两个方法。利用<code>subject.login()</code>进入<code>doGetAuthenticationInfo</code>执行，</p>
-<p>利用<code>subject.hasRole()</code>进入<code>doGetAuthorizationInfo</code>方法执行。</p>
+<li><h3 id="9）授权-认证"><a href="#9）授权-认证" class="headerlink" title="9）授权/认证"></a>9）授权/认证</h3><p>在这里写了一个自定义的relam，继承了<code>AuthorizingRealm</code>重写了<code>doGetAuthenticationInfo</code>和<code>doGetAuthorizationInfo</code>这两个方法。利用<code>subject.login()</code>进入<code>doGetAuthenticationInfo</code>执行，利用<code>subject.hasRole()</code>进入<code>doGetAuthorizationInfo</code>方法执行。</p>
 </li>
 </ul>
 <p>未完待续</p>
