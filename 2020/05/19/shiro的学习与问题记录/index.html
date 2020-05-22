@@ -17,7 +17,7 @@
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png">
 <meta property="article:published_time" content="2020-05-19T13:53:21.000Z">
-<meta property="article:modified_time" content="2020-05-21T15:03:45.881Z">
+<meta property="article:modified_time" content="2020-05-22T15:18:24.201Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="shiro">
 <meta name="twitter:card" content="summary">
@@ -253,6 +253,28 @@ ini配置  </code></pre></li>
 <p>还有一些ini的配置和java配置就不多赘述了，参阅的文章比我写的好多了。</p>
 </li>
 </ul>
+</li>
+<li><h3 id="7）-编码-解码"><a href="#7）-编码-解码" class="headerlink" title="7） 编码/解码"></a>7） 编码/解码</h3><p>​    Shiro提供了base64和16进制字符串编码/解码的API支持，方便一些编码解码操作 。</p>
+<p>base64编码/解码操作 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"hello"</span>;  </span><br><span class="line">String base64Encoded = Base64.encodeToString(str.getBytes());  </span><br><span class="line">String str2 = Base64.decodeToString(base64Encoded);  </span><br><span class="line">Assert.assertEquals(str, str2);</span><br></pre></td></tr></table></figure>
+
+<p>16进制字符串编码/解码操作 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"hello"</span>;  </span><br><span class="line">String base64Encoded = Hex.encodeToString(str.getBytes());  </span><br><span class="line">String str2 = <span class="keyword">new</span> String(Hex.decode(base64Encoded.getBytes()));  </span><br><span class="line">Assert.assertEquals(str, str2);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li><h3 id="8）散列算法"><a href="#8）散列算法" class="headerlink" title="8）散列算法"></a>8）散列算法</h3><p>​    常见的MD5加盐shiro也有，散列算法一般用于生成数据的摘要信息，是一种不可逆的算法，一般适合存储密码之类的数据，常见的散列算法如MD5、SHA等。一般进行散列时最好提供一个salt（盐），比如加密密码“admin”，产生的散列值是“21232f297a57a5a743894a0e4a801fc3”，可以到一些md5解密网站很容易的通过散列值得到密码“admin”，即如果直接对密码进行散列相对来说破解更容易，此时我们可以加一些只有系统知道的干扰数据，如用户名和ID（即盐）；这样散列的对象是“密码+用户名+ID”，这样生成的散列值相对来说更难破解。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"hello"</span>;  </span><br><span class="line">String salt = <span class="string">"123"</span>;  </span><br><span class="line">String md5 = <span class="keyword">new</span> Md5Hash(str, salt).toString();<span class="comment">//还可以转换为 toBase64()/toHex()</span></span><br></pre></td></tr></table></figure>
+
+<p>​    如上代码通过盐“123”MD5散列“hello”。另外散列时还可以指定散列次数，如2次表示：md5(md5(str))：“new Md5Hash(str, salt, 2).toString()”。 </p>
+</li>
+<li><h3 id="9）授权-认证"><a href="#9）授权-认证" class="headerlink" title="9）授权/认证"></a>9）授权/认证</h3><p>在这里写了一个自定义的relam，继承了<code>AuthorizingRealm</code>重写了<code>doGetAuthenticationInfo</code>和<code>doGetAuthorizationInfo</code>这两个方法。利用<code>subject.login()</code>进入<code>doGetAuthenticationInfo</code>执行，</p>
+<p>利用<code>subject.hasRole()</code>进入<code>doGetAuthorizationInfo</code>方法执行。</p>
 </li>
 </ul>
 <p>未完待续</p>
