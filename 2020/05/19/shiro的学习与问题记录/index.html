@@ -17,7 +17,7 @@
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0093/9788/d59f6d02-1f45-3285-8983-4ea5f18111d5.png">
 <meta property="article:published_time" content="2020-05-19T13:53:21.000Z">
-<meta property="article:modified_time" content="2020-05-22T15:31:09.980Z">
+<meta property="article:modified_time" content="2020-05-23T14:01:56.159Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="shiro">
 <meta name="twitter:card" content="summary">
@@ -274,7 +274,7 @@
 
 <p>​    如上代码通过盐“123”MD5散列“hello”。另外散列时还可以指定散列次数，如2次表示：md5(md5(str))：“new Md5Hash(str, salt, 2).toString()”。 </p>
 </li>
-<li><h3 id="9）授权-认证"><a href="#9）授权-认证" class="headerlink" title="9）授权/认证"></a>9）授权/认证</h3><p>在这里写了一个自定义的relam，继承了<code>AuthorizingRealm</code>重写了<code>doGetAuthenticationInfo</code>和<code>doGetAuthorizationInfo</code>这两个方法。利用<code>subject.login()</code>进入<code>doGetAuthenticationInfo</code>执行，利用<code>subject.hasRole()</code>进入<code>doGetAuthorizationInfo</code>方法执行。</p>
+<li><h3 id="9）授权-认证"><a href="#9）授权-认证" class="headerlink" title="9）授权/认证"></a>9）授权/认证</h3><p>在这里写了一个自定义的relam，继承了<code>AuthorizingRealm</code>重写了<code>doGetAuthenticationInfo</code>和<code>doGetAuthorizationInfo</code>这两个方法。利用<code>subject.login()</code>进入<code>doGetAuthenticationInfo</code>执行，利用<code>subject.hasRole()</code>进入<code>doGetAuthorizationInfo</code>方法执行。具体的业务逻辑写到对应的方法中即可。</p>
 </li>
 </ul>
 <p>未完待续</p>
@@ -360,6 +360,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/01/spring-security%E4%B8%8Ejwt%E7%9A%84%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          spring-security与jwt的学习
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/05/%E5%9F%BA%E4%BA%8ESpringBoot-Dubbo%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%EF%BC%88%E5%80%9F%E5%8A%A9Docker-Jenkins%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
@@ -518,6 +527,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">security</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
               </li>
             
             <div class="clearfix"></div>
