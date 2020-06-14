@@ -16,17 +16,17 @@
 <meta property="og:description" content="前言该文章通过学习https:&#x2F;&#x2F;github.com&#x2F;bz51&#x2F;SpringBoot-Dubbo-Docker-Jenkins 来写一下遇到的一些问题和一些总结，来巩固和学习一些知识。">
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="https://leanote.com/api/file/getImage?fileId=5a1cc0eaab64416ff3001095">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/tomact_user.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/fileuser.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/dubbo-admin.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/hello_dubbo.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_admin.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_pro.png">
-<meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/new_cus.png">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/tomact_user.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:hiLgzavVrjX3Krp5mT7oyrYUukQ=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/fileuser.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:MQTEdiJOCrQld5wyaB92tn4Mn7g=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/dubbo-admin.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:OnxxJf-NN0pMPbJfaiPyHN6xWRk=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/hello_dubbo.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:7op3umZ4scfoDKb33n-j_bpFpKQ=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/hello_dubbo.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:7op3umZ4scfoDKb33n-j_bpFpKQ=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/new_pro.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:4yJboTt5YKL_DFGTt78oxm3I-K8=">
+<meta property="og:image" content="http://qbx8c7wtl.bkt.clouddn.com/new_cus.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:NsWEvvS9uSrY75Q0zc89FFUH7yQ=">
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/jekins-jdk.png">
 <meta property="og:image" content="http://q9t3mch26.bkt.clouddn.com/jekins-maven.png">
 <meta property="article:published_time" content="2020-05-05T08:37:39.000Z">
-<meta property="article:modified_time" content="2020-05-19T13:49:26.759Z">
+<meta property="article:modified_time" content="2020-06-14T15:09:47.937Z">
 <meta property="article:author" content="Lgr">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="springboot">
@@ -211,7 +211,7 @@
 <p>第一步<br>启动一个docker的tomcat容器，我采用的是把tomact下的webapp文件夹挂载到本地的一个文件夹中的方式，这样操作也方便。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;我使用的windows版的docker 所以本地目录是D盘，Linux操作同理。    </span><br><span class="line">docker run -it --name tomcatuser1 -p 10050:8080 -v E:\docker\tomcat:&#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps tomcat</span><br></pre></td></tr></table></figure>
 <p>第二步打包项目模块<br>利用maven的插件package一键打包，很方便。</p>
-<p>第三步把war包放入到挂载的本地目录中。<br><br><img src="http://q9t3mch26.bkt.clouddn.com/tomact_user.png" >   </p>
+<p>第三步把war包放入到挂载的本地目录中。<br><br><img src="http://qbx8c7wtl.bkt.clouddn.com/tomact_user.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:hiLgzavVrjX3Krp5mT7oyrYUukQ=" >   </p>
 <blockquote>
 <p>lgruser 是项目名称 hello 是一个controller，很简单的一个demo</p>
 </blockquote>
@@ -224,7 +224,7 @@
 
 <p>第四步运行生成的镜像。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;这里有个小知识点在tomcat中放入war包，暴露的端口是tomcat的端口，所以项目中的server.port是不管用的。  </span><br><span class="line">&#x2F;&#x2F;而利用dockerfile是利用的springcloud内置的tomcat，所以应该暴露server.port。  </span><br><span class="line">docker run -id --name fileuser1 -p 11501:11501 userjar:1</span><br></pre></td></tr></table></figure>
-<p><br><img src="http://q9t3mch26.bkt.clouddn.com/fileuser.png" >  </p>
+<p><br><img src="http://qbx8c7wtl.bkt.clouddn.com/fileuser.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:MQTEdiJOCrQld5wyaB92tn4Mn7g=" >  </p>
 <h4 id="3-搭建Dubbo和zookeeper"><a href="#3-搭建Dubbo和zookeeper" class="headerlink" title="3.搭建Dubbo和zookeeper"></a>3.搭建Dubbo和zookeeper</h4><p>第一步<br>添加依赖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;dubbo-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.2.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 <p>e<br>第二步<br>配置application.properties文件<br>提供者</p>
@@ -239,14 +239,14 @@
 <p>老版本admin<br>详情访问 <a href="https://github.com/apache/dubbo-admin/tree/master" target="_blank" rel="noopener">Dubbo-Ops</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- git clone https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;incubator-dubbo-ops</span><br><span class="line">- cd incubator-dubbo-ops &amp;&amp; mvn package</span><br></pre></td></tr></table></figure>
 <p>之后 <code>java -jar 包名</code>启动，然后启动自己的消费者和提供者。因为我的docker也是在windows环境上的，所以我就直接运行了。访问admin的地址即可。</p>
-<img src="http://q9t3mch26.bkt.clouddn.com/dubbo-admin.png">
+<img src="http://qbx8c7wtl.bkt.clouddn.com/dubbo-admin.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:OnxxJf-NN0pMPbJfaiPyHN6xWRk=">
 
-<p>测试一下服务是否能访问的通，发现完全没有问题，老版admin就到这里了。<br><img src="http://q9t3mch26.bkt.clouddn.com/hello_dubbo.png"></p>
+<p>测试一下服务是否能访问的通，发现完全没有问题，老版admin就到这里了。<br><img src="http://qbx8c7wtl.bkt.clouddn.com/hello_dubbo.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:7op3umZ4scfoDKb33n-j_bpFpKQ="></p>
 <p>新版本admin<br>详情访问 <a href="https://github.com/apache/dubbo-admin/tree/develop" target="_blank" rel="noopener">Dubbo-NewAdmin</a><br>后端服务启动 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- git clone https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;dubbo-admin.git</span><br><span class="line">- mvn clean package  # 到dubbo-admin-server目录下执行</span><br></pre></td></tr></table></figure>
 <p>之后 <code>java -jar 包名</code>启动。<br>前端服务启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<p>访问admin的地址即可。<br><img src="http://q9t3mch26.bkt.clouddn.com/new_admin.png"><br><img src="http://q9t3mch26.bkt.clouddn.com/new_pro.png"><br><img src="http://q9t3mch26.bkt.clouddn.com/new_cus.png"><br>新版的admin有一个问题就是只显示提供者，消费者需要点提供者进去，然后选择消费者才可以看到。</p>
+<p>访问admin的地址即可。<br><img src="http://qbx8c7wtl.bkt.clouddn.com/hello_dubbo.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:7op3umZ4scfoDKb33n-j_bpFpKQ="><br><img src="http://qbx8c7wtl.bkt.clouddn.com/new_pro.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:4yJboTt5YKL_DFGTt78oxm3I-K8="><br><img src="http://qbx8c7wtl.bkt.clouddn.com/new_cus.png?e=1592150794&token=k-f64qLbdH0879ffQCzeQg6Kvl0wJg3HUj2QM-fr:NsWEvvS9uSrY75Q0zc89FFUH7yQ="><br>新版的admin有一个问题就是只显示提供者，消费者需要点提供者进去，然后选择消费者才可以看到。</p>
 <h4 id="3-搭建docker的jenkins"><a href="#3-搭建docker的jenkins" class="headerlink" title="3.搭建docker的jenkins"></a>3.搭建docker的jenkins</h4><p>第一步<br>拉取镜像文件   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull jenkins&#x2F;jenkins</span><br></pre></td></tr></table></figure>
 <p>这里遇见了一个问题，使用<code>docker pull jenkins</code>拉取的镜像版本很低，启动后无法安装插件，一直提示更新版本，所以我就删除了那个版本，换成了现在这个。<br>之后又使用了<code>docker pull docker.io/jenkins/jenkins</code>版本对了也无法下载，又通过一顿查找原因，最后使用了目前这个镜像才可以了。最后搞清楚了原因是插件都是从国外网站下载的，所以才经常失败，换一个源文件即可，具体配置自行百度。</p>
@@ -532,6 +532,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
             
             <div class="clearfix"></div>
