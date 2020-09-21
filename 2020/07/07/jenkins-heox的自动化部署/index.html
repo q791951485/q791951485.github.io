@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言今天学习了dockers + jenkins + hexo 实现的自动部署功能。因为最近在学习docker，所以本次内容都是基于docker来实现。">
 <meta property="og:locale" content="cn">
 <meta property="article:published_time" content="2020-07-07T15:45:03.000Z">
-<meta property="article:modified_time" content="2020-09-21T02:52:22.376Z">
+<meta property="article:modified_time" content="2020-09-21T03:28:37.739Z">
 <meta property="article:author" content="Lgr">
 <meta name="twitter:card" content="summary">
   
@@ -182,7 +182,7 @@
 <h3 id="一、安装Jenkins和nginx"><a href="#一、安装Jenkins和nginx" class="headerlink" title="一、安装Jenkins和nginx"></a>一、安装Jenkins和nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull jenkins&#x2F;jenkins</span><br><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
 
 <p>​    因为我使用的Google Cloud，所以我使用的是Jenkins官方的镜像文件，如果你的Vps是在国内的话需要寻找下载插件地址在国内的镜像，否则的话可能会出现Jenkins部署项目不成功的问题。Nginx就官方镜像就可以了。</p>
-<p>​    </p>
+<p>​    因为我的Jenkins目前只部署了一个我的博客项目，而且在GIT上存储，所以需要在Jenkins中安装和GIT相关的插件<a href="https://plugins.jenkins.io/git" target="_blank" rel="noopener">Git</a> <a href="https://plugins.jenkins.io/git-client" target="_blank" rel="noopener"> Git client</a> <a href="https://plugins.jenkins.io/github" target="_blank" rel="noopener">GitHub</a> <a href="https://plugins.jenkins.io/github-api" target="_blank" rel="noopener">GitHub API</a> <a href="https://plugins.jenkins.io/github-branch-source" target="_blank" rel="noopener"> GitHub Branch Source</a> 以及和node相关的插件<a href="https://plugins.jenkins.io/nodejs" target="_blank" rel="noopener">NodeJS</a> 。</p>
 
       
 
